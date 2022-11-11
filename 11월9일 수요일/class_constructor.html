@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP</title>
+</head>
+<body>
+    <script>
+/*----------------------------------------------------------------------------------------------------*/                
+        const Person = class{
+            // 생성자
+            constructor(num=1, name="", tel=""){
+                this.num = num;
+                this.name = name;
+                this.tel = tel;
+            }
+
+            // 접근자 메서드 - 속성의 값을 설정하고 리턴하는 메서드
+            
+            setNum(num){
+                this.num = num;
+            }
+            
+            getNum(){
+                return this.num;
+            }
+        
+            // 클래스가 호출하는 메서드
+            // 숨겨진 매개변수인 this가 없음
+            // prototype에 추가하는 것이 아니라 클래스에 추가
+            // 인스턴스는 prototype에 추가된 것만 호출이 가능
+            static disp(){
+                // 이 메서드 안에서 this를 사용한다면 이 this는
+                // 인스턴스의 참조가 아니라 class 객체의 참조가 된다.
+                return "static";
+            }
+
+            /* get 과 set을 붙이면 속성처럼 메서드를 호출할 수 있다. 잘 쓰지 않는다.
+            set setNum(num){
+                this.num = num;
+            }
+            
+            get getNum(){
+                return this.num;
+            } 
+
+            person1.setNum = 103; 
+            console.log(person1.getNum)*/
+        }
+/*----------------------------------------------------------------------------------------------------*/        
+        // 인스턴스 생성
+        const person1 = new Person();
+        const person2 = new Person(2, "파이터", "010");
+        const person3 = new Person(3, "나이트", "011");
+
+        // 출력
+        console.log(person3)
+        
+        // person1의 num 출력 - this를 이용해서 생성했으므로 속성 직접 호출 안됨.
+        // console.log(person1.num);
+        person1.setNum(102);
+        console.log(person1.getNum());
+
+        // 클래스 이름으로 일반 메서드 호출하면 에러
+        // 메서드를 호출할 때 this에 인스턴스 자신의 참조를 넘겨야하는데
+        // 클래스 인스턴스가 아니기 때문에 this에 대입이 안된다.
+        // console.log(Person.getNum());
+        console.log(Person.disp());
+
+        // 인스턴스는 static 메서드를 호출할 수 없음
+        // console.log(person.disp());
+    </script>
+    
+</body>
+</html>

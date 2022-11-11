@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴를 랜덤하게 출력</title>
+</head>
+<body>
+    <script>
+        // 랜덤한 숫자를 출력 -Math.random()
+        // 범위는 0.0 에서 1.0
+        // alert(Math.random());
+
+        // 숫자를 정수로 만들기: 반올림round(), 버림, 올림
+        let su1 = Math.random();
+        console.log(Math.round(su1));
+
+        // 0부터 4까지의 정수가 나오도록 하기
+        // 0이면 한식, 1이면 중식, 2이면 일식, 3이면 분식, 4이면 양식
+        let su2 = Math.random() * 1000;
+        let menu = Math.round(su2 %4 );
+        let foods = ["한식", "중식", "일식", "분식", "양식"];
+        console.log(foods[menu]);
+    </script>
+</body>
+</html>

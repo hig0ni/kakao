@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동기와 비동기</title>
+</head>
+<body>
+    <button id="btn">클릭</button>
+    <script>
+        // btn 이라는 id를 가진 버튼을 눌렀을 때 
+        document.getElementById("btn").addEventListener("click", (e)=>{
+            /* 동기식 처리 - 작성한 순서대로 처리하면서 다음 작업을 진행
+            // 반복문을 10억번 돌렸을 때 걸리는 시간을 측정
+            const start = Date.now();
+            for(var i=0; i<1000000000; i++){}
+            const end = Date.now();
+            console.log((end-start)+"밀리초");
+            console.log("다음 작업");*/
+            
+            // 비동기식 처리
+            // 타이머는 비동기식 처리를 수행
+            setTimeout(()=>{
+                const start = Date.now();
+                for(var i=0; i<1000000000; i++){}
+                const end = Date.now();
+                console.log((end-start)+"밀리초");
+                console.log("다음 작업");
+            },0); // 기다리는 시간 없이 바로 수행
+
+            console.log("다음 작업");
+        })
+    </script>
+</body>
+</html>

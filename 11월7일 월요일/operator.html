@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator</title>
+</head>
+<body>
+    <script>
+
+        /*
+        console.log(~14);  // 1의 보수는 부호가 반대가 되고 절대값 1차이
+        console.log(27 & 14); // 10
+        console.log(27 | 14); // 31
+        console.log(27 ^ 14); // 21
+        console.log(14 << 2); // 한 번 밀 때 마다 2배씩 증가
+        console.log(14 >> 2); // 실수는 안됨 그래서 3
+        console.log(14 >>> 2);
+        console.log(-14 >> 2); // 음수의 경우는 >>>과 결과가 다름
+        console.log(-14 >>> 2);
+        var x = 10;
+        // 앞의 식의 결과가 false 이면 뒤의 식을 확인하지 않음
+        let result = x > 10 && x++;
+        console.log(x)
+        */
+
+        /*
+        //javascript는 boolean이 아니어도 && 연산을 할 수 있음, 안쓰는게 좋다
+        result = true && 10;
+        console.log(result);
+
+        let data1 = [1,2];
+        let data2 = [3,4];
+        //data1 falsy 라면 data2가 대입되고 Truthy 라면 data1이 대입된다.
+        result = data1 || data2;
+        console.log(result);
+        console.log("결과:" +result); //문자열과 다른 데이터를 +하면 다른 데이터를 문자열로 변환해서 결합한다.
+
+        var a1 = 20;
+        var a2 = 30;
+        //맨 앞의 내용이 true이면 다음 내용이 남고, 그렇지 않으면 마지막 내용이 남는다.
+        let max = (a1>a2)?a1:a2;
+        console.log(max)
+        */
+
+        /*
+        //nullish operator
+        var data1 = 0;
+        var data2 = "JavaScript"
+        // 0은 falsy 값이라서 data2가 남는다.
+        let result = data1 || data2;
+        console.log(result);
+        // data1이 null이 아니기 때문에 data1이 남는다
+        // ??는 Falsy를 판단하는 것이 아니고 데이터의 존재여부를 확인
+        result = data1 ?? data2;
+        console.log(result);
+        */
+
+        var str = "카리나";
+        console.log(typeof str); //자료형
+
+        var ar = ["카리나","지젤","윈터"];
+        console.log("닝닝" in ar) //존재 여부 확인
+
+    </script>
+</body>
+</html>

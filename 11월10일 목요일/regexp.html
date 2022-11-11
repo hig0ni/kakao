@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규 표현식</title>
+</head>
+<body>
+    <script>
+/*----------------------------------------------------------------------------------------------------*/            
+        var str = "Javascript Reg Exp";
+        // 위의 문자열에 script 가 포함되어 있는지 확인
+        var regExp = /script/;
+        console.log(regExp.test(str)) //true
+
+        var str2 = "JavaScript Reg Exp";
+        // 위의 문자열에 script 가 포함되어 있는지 대소문자 구분 없이 확인
+        var regExp2 = /script/i;
+        console.log(regExp2.test(str2)) //true
+/*----------------------------------------------------------------------------------------------------*/
+        // 주민등록번호 검사
+        // 숫자 6개 - 숫자7개
+        var jumin1 = "123456-1234567";
+        var jumin2 = "123456-123456";
+        var jumin3 = "1r3456-1234567";
+
+        // 패턴 생성
+        var jumin = /\d{6}-\d{7}/;
+
+        console.log(jumin.test(jumin1)); // true
+        console.log(jumin.test(jumin2)); // false
+        console.log(jumin.test(jumin3)); // false
+
+        var email1 = "itstudy@kakao.com";
+        var email2 = "ggangpae1gmail.com";
+        
+        var email = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/   // 외우지말고 정규표현식으로 검사한다만 알아두고 나중에 찾아 쓰기
+        console.log(email.test(email1)); // true
+        console.log(email.test(email2)); // false
+
+        // 입력 데이터의 유효성 검사는 "문자열"과 "정규표현식" 을 이용한다.
+        // 텍스트 마이닝 할 때 정규 표현식에 해당하는 데이터를 다른 데이터로 치환하는 경우가 있음
+/*----------------------------------------------------------------------------------------------------*/
+      
+    </script>
+</body>
+</html>

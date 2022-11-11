@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IF</title>
+</head>
+<body>
+    <script>
+        // 데이터를 입력받기
+        var jumsu = prompt("점수를 입력하세요");
+        console.log(jumsu)
+
+        /*
+        // 점수가 60보다 크다면 합격이라고 출력
+        if(Number(jumsu) > 60){
+            alert("합격")
+        } 
+        
+
+        // 점수가 60이상이면 합격 아니면 불합격이라고 출력
+        if(Number(jumsu) >= 60){
+            alert("합격");
+        }
+        else{
+            alert("불합격");
+        }
+        */
+        // 90이상이면 A 80이상이면 B 60이하는 C
+        if(Number(jumsu) >= 90){
+            alert("A");
+        } else if(jumsu >= 80){
+            alert("B");
+        } else if(jumsu <= 60){
+            alert("C");
+        }
+
+    
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 객체의 내용</title>
+</head>
+<body>
+<!---------------------------------------------------------------------------------------------------------------------------------------->
+    <p id="paragraph">문단 태그</p>
+    <button id="btn">버튼</button>
+
+    <script>
+        document.getElementById("paragraph").addEventListener("click",(e)=>{
+            for(attr in e){
+                console.log(attr + ":" + e[attr]);
+            }
+        })
+
+        document.getElementById("btn").addEventListener("click", (e)=>{
+            // 문단 태그의 클릭이 발생하도록 강제로 이벤트 발생시키기
+            document.getElementById("paragraph").click();
+        })
+    </script>
+<!---------------------------------------------------------------------------------------------------------------------------------------->
+    <!-- action은 처리할 서버의 URL, method는 요청 방식-get, post-->
+    <form action="login" method="post" id="login">
+        
+        <p>
+            아이디 <input type="text" name="id" id="id" />
+            <span id="msg"></span>
+        </p>
+        <p>
+            비밀번호 <input type="password" name="pw" id="pw" />
+            <span id="msg2"></span>
+        </p>
+        <p>
+            비밀번호 확인 <input type="password" name="pw2" id="pw2" />
+            <span id="msg3"></span>
+        </p>
+        <input type="submit" value="로그인" />
+    </form>
+    <script>
+        const msg = document.getElementById("msg");
+        const msg2 = document.getElementById("msg2");
+        const msg3 = document.getElementById("msg3");
+
+
+        document.getElementById("login").addEventListener("submit",(e)=>{
+            // 아이디 입력란 찾아오기
+            if(document.getElementById("id").value.trim().length ===0){
+                e.preventDefault();
+                msg.innerHTML="아이디는 필수 입력입니다.";
+                msg.style.color="red";
+            } else{document.getElementById("msg").innerHTML="";}
+
+            // 비밀번호 입력란 찾아오기
+            if(document.getElementById("pw").value.trim().length ===0){
+                // 기본 이벤트를 제거해서 서버에 전송하지 않도록 하기
+                e.preventDefault();
+                msg2.innerHTML="비밀번호는 필수 입력입니다.";
+                msg2.style.color="red";
+            } else{         
+                // 숫자, 영문, 특수문자 각 1자리 이상이면서 8자에서 16자 사이 통과   
+                let legexp= /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,16}$/;
+                if(legexp.test(document.getElementById("pw").value)===true){
+                    msg2.innerHTML="";
+            } else{
+                e.preventDefault();
+                msg2.innerHTML="비밀번호는 숫자, 영문, 특수문자 각 1자리 이상이면서 8자이상 16자 이하이어야 합니다.";
+                msg2.style.color="blue";
+            }}
+
+            // 비밀번호 확인란 찾아오기
+            if(document.getElementById("pw2").value.trim().length ===0){
+                e.preventDefault();
+                msg3.style.color="red";
+                msg3.innerHTML="비밀번호 확인은 필수 입력입니다.";
+            } else{if(document.getElementById("pw").value !== document.getElementById("pw2").value){
+                // 비밀번호와 확인란이 맞지 않으면 전송이 안되도록 작성
+                e.preventDefault();
+                msg3.innerHTML="비밀번호가 일치해야 합니다.";
+                msg3.style.color="red";
+            }else{
+                msg3.innerHTML="";
+            }}})
+        </script>            
+<!---------------------------------------------------------------------------------------------------------------------------------------->
+        <h1 id="outer">
+            <span id="inner">인라인 태그</span>
+        </h1>
+
+        <script>
+            document.getElementById("outer").addEventListener("click", (e)=>{
+                alert("outer 클릭");
+            })
+
+            document.getElementById("inner").addEventListener("click", (e)=>{
+                alert("inner 클릭");
+                // 버블링 막기
+                e.stopPropagation();
+            })
+        </script>
+</body>
+</html>

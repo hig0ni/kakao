@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 핸들링</title>
+    <script>
+        // window의 load 이벤트는 파일을 전부 읽어서 태그들을 전부 메모리에 적재한 후에 발생
+        // 원래는 <script> 후에 body를 불러와서 실행 안됨
+        window.addEventListener("load", (e)=>{
+            document.getElementById("display").innerHTML="이벤트 처리";
+        })
+    </script>
+</head>
+<body>
+    <div id="display"></div>
+    <div id="body"></div>
+
+
+    <script>
+<!--------------------------------------------------------무한스크롤 만들기---------------------------------------------------------------->
+        for(let i=0; i<20; i++){
+            document.getElementById("body").innerHTML+= "<h1>무한스크롤</h1>"
+        }
+
+        window.addEventListener("scroll",(e)=>{
+            // 스크롤 하는 위치와 문서의 높이가 같을 때
+            // 가장 아래에서 스크롤을 할 때
+            var supportPageOffset = window.pageXOffset !== undefined;
+            var isCSS1compat = ((document.compatMode || "") === "CSS1Compat");
+            var scrollTop = supportPageOffset ? window.pageYOffset :
+                isCSS1compat ? document.documentElement.scrollTop :
+                    document.body.scrollTop;
+                    
+            // 스크롤 하는 높이
+            var scrollHeight = scrollTop + window.innerHeight;
+            // 문서의 높이
+            var documentHeight = document.body.clientHeight;
+
+            // 스크롤 하는 위치가 문서의 높이보다 크거나 같다면
+            if(scrollHeight >= documentHeight){
+                document.getElementById("body").innerHTML+= "<h1>무한스크롤</h1>"
+            }
+        });
+        </script>
+</body>
+</html>
