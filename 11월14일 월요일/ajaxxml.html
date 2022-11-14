@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax-xml</title>
+</head>
+<body>
+    <button id="btn">xml 데이터 가져오기</button>
+    <div id="display"></div>
+
+
+    <script>
+        let btn = document.getElementById("btn");
+        let display = document.getElementById("display");
+        btn.addEventListener("click", (e)=>{
+            let request = new XMLHttpRequest();
+
+            request.open("GET", "./resources/data.xml");
+            request.send('');
+            request.addEventListener("load",()=>{
+                // 읽어온 데이터 중 name 태그 내용만 추출
+                var xmldata = request.responseXML
+                let names = xmldata.getElementsByTagName("name");
+                // 순회하면서 태그 안의 내용 추출
+                for(let i=0; i<names.length; i++){
+                    var name = names[i].childNodes[0].nodeValue;
+                    display.innerHTML += "<p>이름: " + name + "</p>"
+                }
+
+                let companys = xmldata.getElementsByTagName("company");
+                for(let i=0; i<companys.length; i++){
+                    var company = companys[i].childNodes[0].nodeValue;
+                    display.innerHTML += "<p>회사: " + company + "</p>"
+                }
+            })
+        })
+    </script>
+</body>
+</html>

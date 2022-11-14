@@ -38,7 +38,7 @@
                     let count = result.count;
                     let documents = result.documents;
 
-                    content.innerHTML = "데이터 개수: " + count;
+                    content.innerHTML += "데이터 개수: " + count;
                     for(doc of documents){
                         content.innerHTML += "<p>" + doc.name + "</p>"
                     }

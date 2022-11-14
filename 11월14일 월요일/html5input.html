@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼의 변화</title>
+</head>
+<body>
+    이름<input type="text" /><br/>
+    나이<input type="number" /><br/>
+    생일<input type="date" /><br/>
+
+
+    <progress id="progress" value="0" max="100"></progress>
+    <input type="button" id="btn" value="시작"/>
+    
+    <script>
+        let progress = document.getElementById("progress");
+        let btn = document.getElementById("btn");
+
+        // 버튼을 누르면 progress 의 value를 10씩 증가
+        btn.addEventListener("click",(e)=>{
+            // 1초마다 작업하기
+            let timer = setInterval(()=>{
+                progress.value += 10;
+                if(progress.value === 100){
+                    clearInterval(timer);
+                }
+                
+            },1000);
+            
+        })
+    </script>
+
+</body>
+</html>
