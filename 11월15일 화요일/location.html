@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoLocation</title>
+</head>
+<body>
+    <div id="map" style="width:500px;height:400px;"></div>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=18088963f8afefc7665cde9b94826701"></script>
+	<script>
+	    navigator.geolocation.getCurrentPosition((position)=>{
+        var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(position.coords.latitude, position.coords.longitude),
+			level: 3
+		};
+        var map = new kakao.maps.Map(container, options);
+        }, (error)=>{
+        alert(error.code)
+        });	
+	</script>
+
+    <!-------------------------------------------------------------------------------------------------------------------------
+    <div id="map" style="width:500px;height:400px;"></div>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=18088963f8afefc7665cde9b94826701"></script>
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(37.489708575259726, 127.01007444711291),
+			level: 3
+		};
+
+		var map = new kakao.maps.Map(container, options);
+	</script>
+
+    <script>
+        navigator.geolocation.getCurrentPosition((position)=>{
+            // 위도와 경도를 출력
+            alert((position.coords.latitude)+" : "+(position.coords.longitude));
+        }, (error)=>{
+            alert(error.code)
+        });
+
+        navigator.geolocation.watchPosition((position)=>{
+            // 5초마다 위도와 경도를 출력, 정확도가 높은 위치 정보 사용
+            alert((position.coords.latitude)+" : "+(position.coords.longitude));
+        }, (error)=>{
+            alert(error.code);
+        },{
+            maximumAge: 5000,
+            enableHighAccuracy: true
+        });
+    </script>
+    -->
+
+</body>
+</html>
