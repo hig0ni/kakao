@@ -64,6 +64,7 @@
         // list를 클릭했을 때 클릭한 데이터를 input에 출력
         list.addEventListener("click", () =>{
             let selecteddata = list.options[list.selectedIndex];
+            console.log(selecteddata);
             keyinput.value = selecteddata.value;
             valueinput.value = sessionStorage[selecteddata.value];
         })

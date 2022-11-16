@@ -7,13 +7,14 @@
     <title>이미지 미리보기</title>
 </head>
 <body>
-    <!-- 이미지 파일만 선택할 수 있는 file 객체 -->
-         <input type="file" id="img" accept=".png" />
-         <!-- 이렇게도 쓸 수 있다.
-         <input type="file" id="img2" accept="image/*" />-->
         <!-- 이미지 미리보기 영역-->
-         <img id="display" width="250" height="250"></br>
+         <img id="display" width="500" height="500"></br>
 
+        <!-- 이미지 파일만 선택할 수 있는 file 객체 -->
+         <input type="file" id="img" accept=".png" />
+        <!-- 이렇게도 쓸 수 있다.
+         <input type="file" id="img2" accept="image/*" />-->
+         
          <script>
             // 필요한 DOM 객체 찾아오기
             let img = document.getElementById("img")          
