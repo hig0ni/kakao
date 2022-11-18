@@ -25,9 +25,7 @@ console.log(p1===p2);
 
 // Node의 crypto 모듈에서는 key는 32자리 iv는 16자리
 const algorithm = "aes-256-cbc" // 알고리즘은 정해진 알고리즘이용
-const key = "12345678901234567890123456789012";
-const iv = "1234567890123456";
-
+const {key, iv} = require('./keys');
 // 암호화 객체 생성
 const cipher = crypto.createCipheriv(algorithm,key,iv);
 let p3 = cipher.update("01037901997", "utf8", "base64");

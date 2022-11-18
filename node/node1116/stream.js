@@ -2,7 +2,7 @@
 const fs = require('fs');
 
 // 읽기 전용 스트림 생성
-const readStream = fs.createRea             dStream("./test.txt", {highWaterMark:16});
+const readStream = fs.createReadStream("./test.txt", {highWaterMark:16});
 
 // 데이터를 저장하기 위한 객체를 생성
 const data = [];
