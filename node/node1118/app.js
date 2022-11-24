@@ -32,7 +32,7 @@ app.listen(app.get('port'),()=>{
 // 세션 사용을 위한 모듈을 가져오기
 const session = require('express-session');
 const { urlencoded } = require('express');
-// 세셩을 파일에 저장하기 위한 모듈 가져오기
+// 세션을 파일에 저장하기 위한 모듈 가져오기
 const FileStore = require('session-file-store')(session);
 
 // 세션 사용을 위한 미들웨어 장착

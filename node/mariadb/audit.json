@@ -1,0 +1,21 @@
+{
+    "keepSettings": {
+        "type": 2,
+        "amount": 10
+    },
+    "auditFilename": "audit.json",
+    "hashType": "md5",
+    "extension": "",
+    "files": [
+        {
+            "date": 1669257065750,
+            "name": "C:\\Users\\user\\Desktop\\vscode\\js\\node\\mariadb\\lof\\access-20221124.log",
+            "hash": "c21451c7798d73d4ec63dcf11a136e60"
+        },
+        {
+            "date": 1669257475805,
+            "name": "C:\\Users\\user\\Desktop\\vscode\\js\\node\\mariadb\\log\\access-20221124.log",
+            "hash": "58b99469312df46c9be79cfc595dbf62"
+        }
+    ]
+}
