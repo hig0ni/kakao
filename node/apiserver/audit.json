@@ -1,0 +1,16 @@
+{
+    "keepSettings": {
+        "type": 2,
+        "amount": 10
+    },
+    "auditFilename": "audit.json",
+    "hashType": "md5",
+    "extension": "",
+    "files": [
+        {
+            "date": 1669874024855,
+            "name": "C:\\Users\\user\\Desktop\\vscode\\js\\node\\apiserver\\log\\access-20221201.log",
+            "hash": "94cbca02369a71b6a39f08a5e13e0d30"
+        }
+    ]
+}

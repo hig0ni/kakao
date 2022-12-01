@@ -10,7 +10,7 @@ router.use((req, res, next) => {
     //유저정보를 res.locals.user에 저장
     res.locals.user = req.user;
     //게시글을 follow 하고 되고 있는 개수
-    res.locals.followCount = 
+    res.locals.followerCount = 
         req.user?req.user.Followers.length:0;
     res.locals.followingCount = 
         req.user?req.user.Followings.length:0;

@@ -1,6 +1,5 @@
 const express = require('express');
 
-//.env 파일을 읽어서 process.env 에 대입해주는 설정
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -8,15 +7,14 @@ dotenv.config();
 const app = express();
 app.set('port', process.env.PORT);
 
-//로그 출력 설정을 위해서 파일을 읽기 위한 모듈 과 경로 설정 모듈
+//로그 출력을 위한 파일 과 경로를 위한 모듈 설정
 const fs = require('fs');
 const path = require('path');
 
 //static 파일의 경로 설정
 app.use(express.static(path.join(__dirname, 'public')));
 
-//view template(template engine)
-//서버의 데이터를 html 과 합쳐서 다시 html로 변환해주는 라이브러리
+//view template 설정
 const nunjucks = require('nunjucks');
 app.set('view engine', 'html'); 
 nunjucks.configure('views', {
@@ -24,7 +22,6 @@ nunjucks.configure('views', {
     watch: true, 
 });
 
-//로그 설정
 const morgan = require('morgan');
 const FileStreamRotator = require('file-stream-rotator');
 
@@ -48,8 +45,8 @@ app.use(morgan('combined', {stream: accessLogStream}));
 const compression = require('compression');
 app.use(compression());
 
-//post 방식에서 form 이 아닌 형태로 데이터를 전송하는 경우 파라미터 읽기
-let bodyParser = require('body-parser');
+//post 방식의 파라미터 읽기
+var bodyParser = require('body-parser');
 app.use( bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 	extended: true
@@ -57,11 +54,11 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 //쿠키 설정
 const cookieParser = require('cookie-parser');
-app.use(cookieParser(process.env.COOKIE_SECRET));
+app.use(cookieParser(process. env.COOKIE_SECRET));
 
 //세션 설정
 const session = require("express-session");
-let options = {
+var options = {
     host :process.env.HOST,
 	port : process.env.MYSQLPORT,
 	user : process.env.USERID,
@@ -81,45 +78,38 @@ app.use(
 );
 
 const {sequelize} = require('./models');
-sequelize.sync({force:false})
-    .then(()=>{
-        console.log("데이터베이스 접속 성공");
-    })
-    .catch((error) => {
-        console.log(error);
-    })
+
+sequelize.sync({force: false})
+  .then(() => {
+    console.log('데이터베이스 연결 성공');
+  })
+  .catch((err) => {
+    console. error(err);
+  });
 
 const passport = require('passport');
 const passportConfig = require('./passport');
 passportConfig();
 app.use(passport.initialize());
-//세션 기능은 passport 모듈이 알아서 사용
 app.use(passport.session());
 
-
 //라우터 설정
-const pageRouter =require('./routes/page');
-//여기 설정 한 URL 과 page.js 에 설정된 URL의 조합으로
-//URL을 결정
-app.use ('/',pageRouter);
+const indexRouter = require('./routes');
+app.use ('/',indexRouter);
 
-const authRouter =require('./routes/auth');
-app.use ('/auth', authRouter);
+const authRouter = require('./routes/auth');
+app.use ('/auth',authRouter);
 
-const postRouter =require('./routes/post');
-app.use ('/post', postRouter);
+app.use('/img', express.static(path.join(__dirname, 'uploads')));
 
-const userRouter =require('./routes/users');
-app.use ('/user', userRouter);
-
-//404 에러가 발생한 경우 처리
+//에러가 발생한 경우 처리
 app.use((req, res, next) => {
     const err = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
 	err.status = 404;
 	next(err);
 });
 
-//404 이외의 에러가 발생한 경우 처리
+//에러가 발생한 경우 처리
 app.use((err, req, res, next) => {
 	res.locals.message = err.message;
     res.locals.error = process.env.NODE_ENV !== 'production' ? err : {};
@@ -130,4 +120,3 @@ app.use((err, req, res, next) => {
 app.listen(app.get('port'), () => {
   console.log(app.get('port'), '번 포트에서 대기 중');
 });
-
