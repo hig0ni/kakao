@@ -5,15 +5,15 @@ module.exports = class Domain extends Sequelize.Model {
     return super.init({
       host: {
         type: Sequelize.STRING(100),
-        allowNull: false,
+        allowNull: false
       },
       type: {
         type: Sequelize.ENUM('free', 'premium'),
-        allowNull: false,
+        allowNull: false
       },
       clientSecret: {
         type: Sequelize.STRING(36),
-        allowNull: false,
+        allowNull: false
       },
     }, 
     {

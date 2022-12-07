@@ -1,0 +1,7 @@
+::1 - - [02/Dec/2022:00:40:14 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62"
+::1 - - [02/Dec/2022:00:40:14 +0000] "GET /favicon.ico HTTP/1.1" 404 - "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62"
+::1 - - [02/Dec/2022:00:40:25 +0000] "POST /auth/login HTTP/1.1" 302 46 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62"
+::1 - - [02/Dec/2022:00:40:25 +0000] "GET / HTTP/1.1" 200 - "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62"
+::1 - - [02/Dec/2022:00:41:09 +0000] "POST /post/img HTTP/1.1" 200 47 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62"
+::1 - - [02/Dec/2022:00:41:10 +0000] "POST /post HTTP/1.1" 302 46 "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62"
+::1 - - [02/Dec/2022:00:41:10 +0000] "GET / HTTP/1.1" 200 - "http://localhost/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.62"
